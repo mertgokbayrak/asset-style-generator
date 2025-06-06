@@ -9,8 +9,9 @@ from dotenv import load_dotenv
 # Load environment variables from .env file
 load_dotenv()
 
-# Constant for the special style token
-SPECIAL_TOKEN = os.getenv("SPECIAL_TOKEN")
+# Constant for the special style token and the base model
+SPECIAL_TOKEN = "<GameStyle>"
+STABLE_DIFFUSION_MODEL = "runwayml/stable-diffusion-v1-5"
 
 def setup_pipeline(base_model_id, lora_path, device, dtype):
     """
@@ -82,9 +83,9 @@ def main():
     parser = argparse.ArgumentParser(description="Generate images interactively using a fine-tuned LoRA model.")
     
     # Arguments now pull their defaults from the environment variables
-    parser.add_argument("--base_model", type=str, default=os.getenv("STABLE_DIFFUSION_MODEL"), help="Base Stable Diffusion model ID.")
-    parser.add_argument("--lora_path", type=str, default=os.getenv("LORA_PATH"), help="Path to the directory with LoRA weights.")
-    parser.add_argument("--output_dir", type=str, default=os.getenv("OUTPUT_DIR"), help="Directory to save generated images.")
+    parser.add_argument("--base_model", type=str, default=STABLE_DIFFUSION_MODEL, help="Base Stable Diffusion model ID.")
+    parser.add_argument("--lora_path", type=str, default="./lora_output/game_style", help="Path to the directory with LoRA weights.")
+    parser.add_argument("--output_dir", type=str, default="./generated_images/", help="Directory to save generated images.")
     parser.add_argument("--steps", type=int, default=30, help="Number of inference steps.")
     parser.add_argument("--guidance", type=float, default=7.5, help="Guidance scale.")
     parser.add_argument("--seed", type=int, default=None, help="Random seed for reproducibility. Omit for random seed.")

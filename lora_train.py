@@ -16,8 +16,9 @@ from transformers import get_scheduler
 # Load environment variables from a .env file
 load_dotenv()
 
-# special token for the style
-SPECIAL_TOKEN = os.getenv("SPECIAL_TOKEN")
+# special token for the style and the base model
+SPECIAL_TOKEN = "<GameStyle>"
+STABLE_DIFFUSION_MODEL = "runwayml/stable-diffusion-v1-5"
 
 
 
@@ -280,9 +281,9 @@ def main():
     
     # Path and model configurations
     path_group = parser.add_argument_group("Paths and models")
-    path_group.add_argument("--base_model", type=str, default=os.getenv("STABLE_DIFFUSION_MODEL"), help="Base model ID.")
-    path_group.add_argument("--train_data_dir", type=str, default=os.getenv("TRAIN_DATA_DIR"), help="Directory with training images.")
-    path_group.add_argument("--output_dir", type=str, default=os.getenv("TRAIN_OUTPUT_DIR"), help="Directory to save LoRA weights.")
+    path_group.add_argument("--base_model", type=str, default=STABLE_DIFFUSION_MODEL, help="Base model ID.")
+    path_group.add_argument("--train_data_dir", type=str, default="./assets/", help="Directory with training images.")
+    path_group.add_argument("--output_dir", type=str, default="./lora_output/game_style", help="Directory to save LoRA weights.")
 
     # Training parameter configurations
     training_group = parser.add_argument_group("Training parameters")
@@ -307,7 +308,7 @@ def main():
     
     # Preview generation configurations
     preview_group = parser.add_argument_group("Preview generation")
-    preview_group.add_argument("--preview_steps", type=int, default=int(os.getenv("PREVIEW_STEPS")), help="Generate preview every N steps.")
+    preview_group.add_argument("--preview_steps", type=int, default=254, help="Generate preview every N steps.")
     
     args = parser.parse_args()
     train(args)
