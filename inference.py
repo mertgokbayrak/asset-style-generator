@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Constant for the special style token
-SPECIAL_TOKEN = "<GameStyle>"
+SPECIAL_TOKEN = os.getenv("SPECIAL_TOKEN")
 
 def setup_pipeline(base_model_id, lora_path, device, dtype):
     """
