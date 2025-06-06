@@ -84,7 +84,7 @@ def main():
     
     # Arguments now pull their defaults from the environment variables
     parser.add_argument("--base_model", type=str, default=STABLE_DIFFUSION_MODEL, help="Base Stable Diffusion model ID.")
-    parser.add_argument("--lora_path", type=str, default="./lora_output/game_style", help="Path to the directory with LoRA weights.")
+    parser.add_argument("--lora_path", type=str, default="./lora_output/game_style/unet_lora/", help="Path to the directory with LoRA weights.")
     parser.add_argument("--output_dir", type=str, default="./generated_images/", help="Directory to save generated images.")
     parser.add_argument("--steps", type=int, default=30, help="Number of inference steps.")
     parser.add_argument("--guidance", type=float, default=7.5, help="Guidance scale.")

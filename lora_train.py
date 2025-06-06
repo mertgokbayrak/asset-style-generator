@@ -283,7 +283,7 @@ def main():
     path_group = parser.add_argument_group("Paths and models")
     path_group.add_argument("--base_model", type=str, default=STABLE_DIFFUSION_MODEL, help="Base model ID.")
     path_group.add_argument("--train_data_dir", type=str, default="./assets/", help="Directory with training images.")
-    path_group.add_argument("--output_dir", type=str, default="./lora_output/game_style", help="Directory to save LoRA weights.")
+    path_group.add_argument("--output_dir", type=str, default="./lora_output/game_style/unet_lora/", help="Directory to save LoRA weights.")
 
     # Training parameter configurations
     training_group = parser.add_argument_group("Training parameters")
