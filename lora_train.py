@@ -286,12 +286,12 @@ def main():
 
     # Training parameter configurations
     training_group = parser.add_argument_group("Training parameters")
-    training_group.add_argument("--resolution", type=int, default=int(os.getenv("TRAIN_RESOLUTION")))
-    training_group.add_argument("--batch_size", type=int, default=int(os.getenv("TRAIN_BATCH_SIZE")), help="Batch size (per device).")
+    training_group.add_argument("--resolution", type=int, default=512, help="Resolution of the training images.")
+    training_group.add_argument("--batch_size", type=int, default=1, help="Batch size (per device).")
     training_group.add_argument("--gradient_accumulation_steps", type=int, default=4, help="Number of steps to accumulate gradients.")
     training_group.add_argument("--learning_rate", type=float, default=1e-4, help="Learning rate for the optimizer.")
-    training_group.add_argument("--num_epochs", type=int, default=int(os.getenv("TRAIN_NUM_EPOCHS", 10)))
-    training_group.add_argument("--max_train_steps", type=int, default=int(os.getenv("MAX_TRAIN_STEPS", 2540)), help="Overrides num_epochs.")
+    training_group.add_argument("--num_epochs", type=int, default=10, help="Number of epochs to train for.")
+    training_group.add_argument("--max_train_steps", type=int, default=2540, help="Overrides num_epochs.")
     training_group.add_argument("--seed", type=int, default=42, help="Random seed for reproducibility.")
     training_group.add_argument("--mixed_precision", type=str, default="no", choices=["no", "fp16", "bf16"], help="Mixed precision training. 'no' for MPS.")
     
