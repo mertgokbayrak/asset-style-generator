@@ -1,0 +1,13 @@
+# Environments
+.env
+.venv
+/generated_images/
+/assets/
+*.pyc
+__pycache__/
+.DS_Store
+*.pyo
+*.pyd
+*.pyw
+*.pyz
+*.pywz
