@@ -3,7 +3,7 @@
 .venv
 /generated_images/
 /assets/
-/lora_output/unet_lora/diffusion_pytorch_model.safetensors
+lora_output/game_style/unet_lora/diffusion_pytorch_model.safetensors
 *.pyc
 __pycache__/
 .DS_Store
@@ -12,3 +12,4 @@ __pycache__/
 *.pyw
 *.pyz
 *.pywz
+.gitattributes
