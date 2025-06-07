@@ -1,8 +1,6 @@
 # Environments
 .env
 .venv
-/generated_images/
-/assets/
 lora_output/game_style/unet_lora/diffusion_pytorch_model.safetensors
 *.pyc
 __pycache__/
