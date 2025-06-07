@@ -52,18 +52,26 @@ pip install -r requirements.txt
 #### Step 2: Prepare Assets and Configuration
 Place all your training images inside the `assets/` folder.
 
+#### Step 3: Download the Pre-Trained LoRA Model (Optional)
+If you wish to skip training and use the author's pre-trained style model, download the `diffusion_pytorch_model.safetensors` file from Hugging Face.
 
-#### Step 3: Train the LoRA Model
-Run the training script using `accelerate`. This will read the training images and create the LoRA model based on the `TRAIN_*` parameters in your `.env` file.
+**Download Link:** [mertgokbayrak/game-asset-style-lora](https://huggingface.co/mertgokbayrak/game-asset-style-lora/blob/main/diffusion_pytorch_model.safetensors)
 
+You must place the downloaded file at the following path inside the project directory:
+`lora_output/game_style/unet_lora/diffusion_pytorch_model.safetensors`
+
+You may need to create these directories if they do not exist.
+
+#### Step 4: Train the LoRA Model
+If you skip the Step 3 and you are not using the pre-trained model, run the training script using `accelerate`. This will read the training images and create the LoRA model.
 
 ```bash
 accelerate launch lora_train.py
 ```
 The final LoRA adapter will be saved to the location specified by `TRAIN_OUTPUT_DIR`.
 
-#### Step 4: Generate New Assets
-Once training is complete, run the inference script to start the interactive generation session.
+#### Step 5: Generate New Assets
+Once you have a trained LoRA model (either by training it yourself or by downloading the pre-trained version), run the inference script to start the interactive generation session.
 
 ```bash
 python inference.py
