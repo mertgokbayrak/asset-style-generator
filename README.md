@@ -63,7 +63,7 @@ You must place the downloaded file at the following path inside the project dire
 You may need to create these directories if they do not exist.
 
 #### Step 4: Train the LoRA Model
-If you skip the Step 3 and you are not using the pre-trained model, run the training script using `accelerate`. This will read the training images and create the LoRA model.
+If you skip the **Step 3** and you are not using the pre-trained model, run the training script using `accelerate`. This will read the training images and create the LoRA model.
 
 ```bash
 accelerate launch lora_train.py
@@ -134,6 +134,7 @@ docker run --rm -it \
 ### Challenges & Solutions
 -   **Dependency Conflicts**: The initial development faced significant `ImportError` issues due to version incompatibilities between the `diffusers`, `transformers`, and `accelerate` libraries. This was resolved by meticulously finding compatible versions and pinning them in `requirements.txt`.
 -   **LoRA Weight Loading**: The `diffusers` library had issues directly loading the saved `.safetensors` file via high-level functions. This was overcome by manually loading the weights and applying them to the U-Net's attention processors, a more robust and direct method.
+-   **Uploading the pre-trained model on the GitHub repository**: Since the diffusion model I LoRA trained is a large file (3.44 GB), pushing it to the repository was a real challenge because it also exceeds the limit for Git LFS. I solved this problem by uploading the model I LoRA trained to a HuggingFace model repository, and adding the link to the setup instructions in README.
 
 ### Future Improvement Ideas
 -   **Web Interface**: Replace the command-line inference script with a user-friendly web UI using Gradio or Streamlit. This would allow for easier interaction, with sliders for parameters like steps and guidance scale.
