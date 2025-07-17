@@ -39,7 +39,7 @@ The project is split into two main components that work in tandem:
 
 ```bash 
 # Clone the repository:
-git clone https://github.com/mertgokbayrak/apps-interview-project.git
+git clone https://github.com/mertgokbayrak/asset-style-generator.git
 
 # Create and activate a Python virtual environment
 python3 -m venv .venv
